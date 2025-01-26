@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="catBean" class="annotation.Cat" scope="prototype">
+        <property name="title" value="Мурзик"/>
+    </bean>
+
+    <bean id="homeBean" class="annotation.Home">
+        <property name="address" value="Красная 1"/>
+        <property name="owner" ref="personBean"/>
+    </bean>
+
+    <bean id="personBean" class="annotation.Person">
+        <property name="name" value="Иван"/>
+        <property name="home" ref="homeBean"/>
+    </bean>
+</beans>
