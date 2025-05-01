@@ -33,13 +33,8 @@ public class ProjectDao {
     List<Product> products = new ArrayList<>();
     try(Session session = factory.getCurrentSession()) {
       session.getTransaction().begin();
-      Long marker = 0L;
 
-      while (session.find(Product.class, marker) != null){
-        Product product = session.find(Product.class, marker);
-        products.add(product);
-        marker++;
-      }
+      products = session.createQuery("Select s from product s", Product.class).getResultList();
 
       session.getTransaction().commit();
     }
